@@ -22,9 +22,9 @@ namespace Coupa
 
             IWebDriver w;
 
-            // Modified
-            String username = "";
-            String password = "";
+            // Amended
+            String username = "Mickey";
+            String password = "Mouse";
             String coupaLogin = "https://australianunity-test.coupahost.com/sessions/support_login";
 
             w = new FirefoxDriver();
