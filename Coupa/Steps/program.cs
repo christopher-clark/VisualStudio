@@ -40,7 +40,7 @@ namespace Coupa
 
             cpo.navigateToPage(w, "Requests");
             RequestPageObj rpo = new RequestPageObj(w);
-            rpo.selectReqOption(w,"Other requests");
+            rpo.selectReqOption(w, "Other requests");
             Thread.Sleep(300);
             rpo.selectReqOption(w, "Requisitions");
             Thread.Sleep(300);
@@ -49,22 +49,22 @@ namespace Coupa
             List<IWebElement> toolTable = w.FindElements(By.ClassName("toolbar")).ToList();
 
 
-            //Thread.Sleep(300);
-            //cpo.navigateToPage(w, "Orders");
-            //Thread.Sleep(300);
-            //cpo.navigateToPage(w, "Invoices");
-            //Thread.Sleep(300);
-            //cpo.navigateToPage(w, "Inventory");
-            //Thread.Sleep(300);
-            //cpo.navigateToPage(w, "Sourcing");
-            //Thread.Sleep(300);
-            //cpo.navigateToPage(w, "Suppliers");
-            //Thread.Sleep(300);
-            //cpo.navigateToPage(w, "Items");
-            //Thread.Sleep(300);
-            //cpo.navigateToPage(w, "Reports");
-            //Thread.Sleep(300);
-            //cpo.navigateToPage(w, "Setup");
+            Thread.Sleep(300);
+            cpo.navigateToPage(w, "Orders");
+            Thread.Sleep(300);
+            cpo.navigateToPage(w, "Invoices");
+            Thread.Sleep(300);
+            cpo.navigateToPage(w, "Inventory");
+            Thread.Sleep(300);
+            cpo.navigateToPage(w, "Sourcing");
+            Thread.Sleep(300);
+            cpo.navigateToPage(w, "Suppliers");
+            Thread.Sleep(300);
+            cpo.navigateToPage(w, "Items");
+            Thread.Sleep(300);
+            cpo.navigateToPage(w, "Reports");
+            Thread.Sleep(300);
+            cpo.navigateToPage(w, "Setup");
             Thread.Sleep(300);
             cpo.closeBrowser(w);
         }
