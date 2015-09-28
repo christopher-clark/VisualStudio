@@ -63,6 +63,7 @@ namespace Coupa
             cpo.navigateToPage(w, "Items");
             Thread.Sleep(300);
             cpo.navigateToPage(w, "Reports");
+            Thread.Sleep(300)
             Thread.Sleep(300);
             cpo.navigateToPage(w, "Setup");
             Thread.Sleep(300);
