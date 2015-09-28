@@ -22,8 +22,8 @@ namespace Coupa
 
             IWebDriver w;
 
-            String username = "CCLark@australianunity.com.au";
-            String password = "1Ev0st0r!";
+            String username = "";
+            String password = "";
             String coupaLogin = "https://australianunity-test.coupahost.com/sessions/support_login";
 
             w = new FirefoxDriver();
