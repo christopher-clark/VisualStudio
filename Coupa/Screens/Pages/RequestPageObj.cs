@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Screens.Pages;
 using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
+using System.Threading;
 
-namespace Coupa.Screens.Pages
+namespace Screens.Pages
 {
     class RequestPageObj : BasePage
     {
@@ -18,26 +18,37 @@ namespace Coupa.Screens.Pages
         [FindsBy(How = How.ClassName, Using = "primary")]
         IList<IWebElement> pageMenu;
 
-        [FindsBy(How = How.XPath, Using = "//*[@id='requisition_header_filter")]
-        IWebElement filter;
+        [FindsBy(How = How.Id, Using = "requisition_header_filter")]
+        IWebElement filt;
         #endregion
 
         #region Code
-        // Select Top level menu option
-        public void selectReqOption(IWebDriver w, String option)
+        public void filterBy(String filter)
         {
-            w.FindElement(By.LinkText(option)).Click();
+            SelectElement se = new SelectElement(filt);
+            se.SelectByText(filter);
         }
-        // Select filter dropdown
-        public void selectFilter(String option)
+
+        public void testDropdown()
         {
-            SelectElement se;
+            // Anchor to header of View part of Screen
+            // Assign anchor to a Select WebElement then grab the Options into a List
+            SelectElement se = new SelectElement(filt);
+            List<IWebElement> selects = se.Options.ToList();
+            // Iterate through the available Options
+            foreach (var dropdowns in selects)
+            {
+                dropdowns.Click();
+                Thread.Sleep(1000);
+            }
         }
+               
+    #endregion
+    #region Snapshot
+    protected override void snapshot() { }
         #endregion
-        #region Snapshot
-        protected override void snapshot() { }
-        #endregion
-        #region Init
+        #region 
+
         public RequestPageObj(IWebDriver w)
         {
             Driver = w;
