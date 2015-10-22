@@ -11,7 +11,7 @@ using Screens.Pages;
 
 namespace Screens.Pages
 {
-    class CoupaPageObj : BasePage
+    class CoupaHomePageObj : BasePage
     {
 
          #region Findsby
@@ -58,7 +58,7 @@ namespace Screens.Pages
         protected override void snapshot() { }
         #endregion
         #region Init
-        public CoupaPageObj(IWebDriver w)
+        public CoupaHomePageObj(IWebDriver w)
         {
             Driver = w;
             PageFactory.InitElements(w, this);
