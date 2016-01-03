@@ -9,65 +9,53 @@ using OpenQA.Selenium;
 using System.Collections;
 using Screens.Pages;
 using OpenQA.Selenium.Support.UI;
-using Coupa.Screens.Pages;
+
 
 namespace Coupa
 {
     class program
     {
-        private static List<String> pages = new String[] { "Requests", "Orders", "Invoices", "Inventory", "Sourcing", "Suppliers", "Items", "Reports", "Setup", "Home" }.ToList();
-
+        private static List<String> pages = new String[] { "Home", "Requests", "Orders", "Invoices", "Inventory", "Sourcing", "Suppliers", "Items", "Reports", "Setup" }.ToList();
+        
         static void Main(string[] args)
         {
-
             IWebDriver w;
-
-            // Amended
-            String username = "Mickey";
-            String password = "Mouse";
-            String coupaLogin = "https://australianunity-test.coupahost.com/sessions/support_login";
+           
+            String username = "cclark@australianunity.com.au";
+            String password = "1Ev0st0r!";
+            String sideDoor = "https://australianunity.coupahost.com/sessions/support_login";
+            String coupaLogin = "https://australianunity.coupahost.com";
 
             w = new FirefoxDriver();
             w.Manage().Window.Maximize();
-            w.Navigate().GoToUrl(coupaLogin);
-            //List<IWebElement> pageMenu = w.FindElements(By.ClassName("inner")).ToList();
-            //List<IWebElement> secondLevelMenu = w.FindElements(By.Id("secondary")).ToList();
-
-            FileUploader fu = new FileUploader();
-            CoupaPageObj cpo = new CoupaPageObj(w);
-            
+            //w.Navigate().GoToUrl(login);
+            w.Navigate().GoToUrl(sideDoor);
+           
+            CoupaHomePageObj cpo = new CoupaHomePageObj(w);
             cpo.login(username, password);
             cpo.signin();
 
-            cpo.navigateToPage(w, "Requests");
-            RequestPageObj rpo = new RequestPageObj(w);
-            rpo.selectReqOption(w, "Other requests");
-            Thread.Sleep(300);
-            rpo.selectReqOption(w, "Requisitions");
-            Thread.Sleep(300);
-            rpo.selectReqOption(w, "Requisition Lines");
-            Thread.Sleep(300);
-            List<IWebElement> toolTable = w.FindElements(By.ClassName("toolbar")).ToList();
-
-
-            Thread.Sleep(300);
-            cpo.navigateToPage(w, "Orders");
-            Thread.Sleep(300);
+            IList<IWebElement> pageMenu = cpo.pagesMenu().ToList();
+            
             cpo.navigateToPage(w, "Invoices");
-            Thread.Sleep(300);
-            cpo.navigateToPage(w, "Inventory");
-            Thread.Sleep(300);
-            cpo.navigateToPage(w, "Sourcing");
-            Thread.Sleep(300);
-            cpo.navigateToPage(w, "Suppliers");
-            Thread.Sleep(300);
-            cpo.navigateToPage(w, "Items");
-            Thread.Sleep(300);
-            cpo.navigateToPage(w, "Reports");
-            Thread.Sleep(300)
-            Thread.Sleep(300);
-            cpo.navigateToPage(w, "Setup");
-            Thread.Sleep(300);
+                               
+            cpo.expandTable();
+            cpo.sortInvoices();
+
+            
+            IList<String> headers = cpo.header();
+            IList<IWebElement> body = cpo.body();
+                        
+            //foreach (var menu in pages)
+            //{
+            //    cpo.navigateToPage(w, menu);
+            //    Thread.Sleep(300);
+            //    if ((!menu.Equals("Home")) && (!menu.Equals("Reports")) && (!menu.Equals("Setup")))
+            //    {
+            //        cpo.testDropdown();
+            //    }
+            //}
+
             cpo.closeBrowser(w);
         }
     }
