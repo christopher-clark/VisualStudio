@@ -17,37 +17,15 @@ namespace Screens.Pages
         #region Findsby
         [FindsBy(How = How.ClassName, Using = "primary")]
         IList<IWebElement> pageMenu;
-
-        [FindsBy(How = How.Id, Using = "requisition_header_filter")]
-        IWebElement filt;
         #endregion
 
         #region Code
-        public void filterBy(String filter)
-        {
-            SelectElement se = new SelectElement(filt);
-            se.SelectByText(filter);
-        }
-
-        public void testDropdown()
-        {
-            // Anchor to header of View part of Screen
-            // Assign anchor to a Select WebElement then grab the Options into a List
-            SelectElement se = new SelectElement(filt);
-            List<IWebElement> selects = se.Options.ToList();
-            // Iterate through the available Options
-            foreach (var dropdowns in selects)
-            {
-                dropdowns.Click();
-                Thread.Sleep(1000);
-            }
-        }
-               
-    #endregion
-    #region Snapshot
-    protected override void snapshot() { }
+                    
         #endregion
-        #region 
+        #region Snapshot
+        protected override void snapshot() { }
+        #endregion
+        #region Constructor
 
         public RequestPageObj(IWebDriver w)
         {
