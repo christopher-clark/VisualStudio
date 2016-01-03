@@ -42,19 +42,19 @@ namespace Coupa
             cpo.expandTable();
             cpo.sortInvoices();
 
-            
-            IList<String> headers = cpo.header();
-            IList<IWebElement> body = cpo.body();
-                        
-            //foreach (var menu in pages)
-            //{
-            //    cpo.navigateToPage(w, menu);
-            //    Thread.Sleep(300);
-            //    if ((!menu.Equals("Home")) && (!menu.Equals("Reports")) && (!menu.Equals("Setup")))
-            //    {
-            //        cpo.testDropdown();
-            //    }
-            //}
+
+            //  IList<String> headers = cpo.header();
+            // IList<IWebElement> body = cpo.body();
+
+            foreach (var menu in pages)
+            {
+                cpo.navigateToPage(w, menu);
+                Thread.Sleep(300);
+                if ((!menu.Equals("Home")) && (!menu.Equals("Reports")) && (!menu.Equals("Setup")))
+                {
+                    cpo.testDropdown();
+                }
+            }
 
             cpo.closeBrowser(w);
         }
