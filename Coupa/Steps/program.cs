@@ -23,7 +23,7 @@ namespace Coupa
            
             String username = "cclark@australianunity.com.au";
             String password = "1Ev0st0r!";
-            String sideDoor = "https://australianunity.coupahost.com/sessions/support_login";
+            String sideDoor = "https://australianunity-stage.coupahost.com/sessions/support_login";
             String coupaLogin = "https://australianunity.coupahost.com";
 
             w = new FirefoxDriver();
@@ -37,15 +37,10 @@ namespace Coupa
 
             IList<IWebElement> pageMenu = cpo.pagesMenu().ToList();
             
-            cpo.navigateToPage(w, "Invoices");
+      //      cpo.navigateToPage(w, "Invoices");
                                
-            cpo.expandTable();
-            cpo.sortInvoices();
-
-
-            //  IList<String> headers = cpo.header();
-            // IList<IWebElement> body = cpo.body();
-
+      //      cpo.expandTable(); 2016
+           
             foreach (var menu in pages)
             {
                 cpo.navigateToPage(w, menu);
