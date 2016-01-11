@@ -18,4 +18,8 @@ namespace Coupa
     {
         System.Console.WriteLine("Hello, World!");
     }
+    public void cFunc()
+    {
+        System.Console.WriteLine("Hello, World!");
+    }
 }
