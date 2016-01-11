@@ -14,4 +14,8 @@ namespace Coupa
             System.Console.WriteLine("Hello, World!");
         }
     }
+    public void ccFunc()
+    {
+        System.Console.WriteLine("Hello, World!");
+    }
 }
